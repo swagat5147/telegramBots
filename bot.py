@@ -22,9 +22,10 @@ def bop(bot, update):
 	bot.send_photo(chat_id=chat_id, photo = url)
 	print("Sending photo...")
 
-def stfu(bot, update):
+def hi(bot, update):
 	chat_id = update.message.chat_id
-	bot.send_messsage(chat_id = chat_id, text = "Shut The Fuck Up Subhrajit")
+	bot.send_messsage(chat_id = chat_id, text = "Hiiii")
+	print("Peru")
 
 def main():
 	TOKEN = os.getenv("TOKEN")
@@ -32,7 +33,7 @@ def main():
 	updater = Updater(TOKEN)
 	dp = updater.dispatcher
 	dp.add_handler(CommandHandler('bop', bop))
-	dp.add_handler(CommandHandler('stfu', stfu))
+	dp.add_handler(CommandHandler('hi', hi))
 	updater.start_polling()
 	updater.idle()
 
