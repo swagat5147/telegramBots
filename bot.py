@@ -33,7 +33,7 @@ def main():
 	updater = Updater(TOKEN)
 	dp = updater.dispatcher
 	dp.add_handler(CommandHandler('bop', bop))
-	dp.add_handler(CommandHandler('hi', hi, pass_args= true))
+	dp.add_handler(CommandHandler('hi', hi, pass_args= True))
 	updater.start_polling()
 	updater.idle()
 
