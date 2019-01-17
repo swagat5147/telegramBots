@@ -1,6 +1,7 @@
 from telegram.ext import Updater, InlineQueryHandler, CommandHandler
 import requests
 import re
+import os
 
 def get_url():
 	contents = requests.get('https://random.dog/woof.json').json()
@@ -21,7 +22,8 @@ def bop(bot, update):
 	bot.send_photo(chat_id=chat_id, photo = url)
 
 def main():
-	updater = Updater('YOUR_TOKEN')
+	TOKEN = os.get.environ("TOKEN")
+	updater = Updater(TOKEN)
 	dp = updater.dispatcher
 	dp.add_handler(CommandHandler('bop', bop))
 	updater.start_polling()
