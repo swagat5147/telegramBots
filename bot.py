@@ -25,11 +25,14 @@ def bop(bot, update):
 
 def main():
 	TOKEN = os.getenv("TOKEN")
+	PORT = int(os.environ.get('PORT', '8443'))
 	print("Running bot")
 	updater = Updater(TOKEN)
 	dp = updater.dispatcher
 	dp.add_handler(CommandHandler('bop', bop))
-	updater.start_polling()
+	updater.start_webhook(listen="0.0.0.0",
+							port = PORT,
+							url_path = TOKEN)
 	updater.idle()
 
 if __name__ == '__main__':
