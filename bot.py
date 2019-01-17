@@ -22,7 +22,7 @@ def bop(bot, update):
 	bot.send_photo(chat_id=chat_id, photo = url)
 
 def main():
-	TOKEN = os.get.environ("TOKEN")
+	TOKEN = os.getenv("TOKEN")
 	updater = Updater(TOKEN)
 	dp = updater.dispatcher
 	dp.add_handler(CommandHandler('bop', bop))
