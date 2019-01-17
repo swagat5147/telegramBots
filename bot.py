@@ -20,9 +20,11 @@ def bop(bot, update):
 	url = get_image_url()
 	chat_id = update.message.chat_id
 	bot.send_photo(chat_id=chat_id, photo = url)
+	print("Sending photo...")
 
 def main():
 	TOKEN = os.getenv("TOKEN")
+	print("Running bot")
 	updater = Updater(TOKEN)
 	dp = updater.dispatcher
 	dp.add_handler(CommandHandler('bop', bop))
