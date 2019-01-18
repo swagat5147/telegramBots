@@ -6,6 +6,9 @@ import os
 
 app = Flask(__name__, static_folder="/static")
 
+TOKEN = os.environ.get('TOKEN')
+BASE_URL = "https://api.telegram.org/bot{}/".format(TOKEN)
+
 def get_url():
 	contents = requests.get('https://random.dog/woof.json').json()
 	image_url = contents['url']
@@ -30,10 +33,14 @@ def update():
 		return jsonify(request.get_json())
 	else:
 		print(request.get_json())
+		data = request.get_json()
+		if data['text'].startswith("/bop"):
+			chat_id = data['chat']['id']
+			r = requests.post(BASE_URL+ "sendPhoto", data={'chat_id': chat_id, 'photo' : get_image_url(), 'caption' : "Bhow bhow!"})
+			print(r.status_code)
 		return jsonify(request.get_json())
 
 if __name__ == '__main__':
-	TOKEN = os.environ.get('TOKEN')
 	port = int(os.environ.get('PORT', 5000))
 	http_server = WSGIServer(('',port),app)
 	http_server.serve_forever()
