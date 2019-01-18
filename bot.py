@@ -19,11 +19,11 @@ def get_image_url():
 		file_extension = re.search("([^.]*)$",url).group(1).lower()
 	return url
 
-@app.route("/")
+@app.route("/", methods=["GET"])
 def index():
 	return "Hello user!"
 
-@app.route("/recieve")
+@app.route("/recieve", methods=["POST"])
 def receive():
 	print("Running bot")
 	print(request)
@@ -31,8 +31,9 @@ def receive():
 	return jsonify({"status":"200, OK"})
 
 if __name__ == '__main__':
+	TOKEN = os.environ.get('TOKEN')
 	r = requests.post("https://api.telegram.org/bot{}/setWebhook?url=https://kutta-bot.herokuapp.com/receive".format(TOKEN))
 	print(r.content)
 	port = int(os.environ.get('PORT', 5000))
-    http_server = WSGIServer(('',port),app)
+	http_server = WSGIServer(('',port),app)
 	http_server.serve_forever()
