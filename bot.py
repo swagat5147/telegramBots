@@ -24,9 +24,9 @@ def index():
 	return render_template("index.html")
 
 @app.route("/recieve", methods=["GET","POST"])
-def receive():
+def update():
 	print("Running bot")
-	if request.method = 'GET':
+	if request.method == 'GET':
 		return jsonify(request.get_json())
 	else:
 		print(request.get_json())
@@ -34,8 +34,6 @@ def receive():
 
 if __name__ == '__main__':
 	TOKEN = os.environ.get('TOKEN')
-	r = requests.post("https://api.telegram.org/bot{}/setWebhook?url=https://kutta-bot.herokuapp.com/receive".format(TOKEN))
-	print(r.content)
 	port = int(os.environ.get('PORT', 5000))
 	http_server = WSGIServer(('',port),app)
 	http_server.serve_forever()
