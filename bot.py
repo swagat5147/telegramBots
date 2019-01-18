@@ -23,7 +23,7 @@ def get_image_url():
 def index():
 	return render_template("index.html")
 
-@app.route("/recieve", methods=["GET","POST"])
+@app.route("/update", methods=["GET","POST"])
 def update():
 	print("Running bot")
 	if request.method == 'GET':
