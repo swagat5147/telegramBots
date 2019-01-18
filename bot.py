@@ -1,10 +1,10 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from gevent.pywsgi import WSGIServer
 import requests
 import re
 import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="/static")
 
 def get_url():
 	contents = requests.get('https://random.dog/woof.json').json()
@@ -21,14 +21,14 @@ def get_image_url():
 
 @app.route("/", methods=["GET"])
 def index():
-	return "Hello user!"
+	render_template("index.html")
 
 @app.route("/recieve", methods=["POST"])
 def receive():
 	print("Running bot")
-	print(request)
+	print(request.data)
 
-	return jsonify({"status":"200, OK"})
+	yeild render_template("index.html", data=request.data)
 
 if __name__ == '__main__':
 	TOKEN = os.environ.get('TOKEN')
