@@ -21,14 +21,14 @@ def get_image_url():
 
 @app.route("/", methods=["GET"])
 def index():
-	render_template("index.html")
+	return render_template("index.html", data="Hello")
 
 @app.route("/recieve", methods=["POST"])
 def receive():
 	print("Running bot")
 	print(request.data)
 
-	yeild render_template("index.html", data=request.data)
+	return render_template("index.html", data=request.data)
 
 if __name__ == '__main__':
 	TOKEN = os.environ.get('TOKEN')
