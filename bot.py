@@ -6,6 +6,8 @@ import os
 
 app = Flask(__name__, static_folder="/static")
 
+DATA = "Hello"
+
 def get_url():
 	contents = requests.get('https://random.dog/woof.json').json()
 	image_url = contents['url']
@@ -21,14 +23,16 @@ def get_image_url():
 
 @app.route("/", methods=["GET"])
 def index():
-	return render_template("index.html", data="Hello")
+	print(DATA)
+	return render_template("index.html", data=DATA)
 
 @app.route("/recieve", methods=["POST"])
 def receive():
 	print("Running bot")
-	print(request.data)
-
-	return render_template("index.html", data=request.data)
+	global DATA
+	DATA=request.data
+	print(DATA)
+	return render_template("index.html", data=DATA)
 
 if __name__ == '__main__':
 	TOKEN = os.environ.get('TOKEN')
