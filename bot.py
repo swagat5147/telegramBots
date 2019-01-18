@@ -1,7 +1,10 @@
-from telegram.ext import Updater, InlineQueryHandler, CommandHandler
+from flask import Flask, request, jsonify
+from gevent.pywsgi import WSGIServer
 import requests
 import re
 import os
+
+app = Flask(__name__)
 
 def get_url():
 	contents = requests.get('https://random.dog/woof.json').json()
@@ -16,25 +19,20 @@ def get_image_url():
 		file_extension = re.search("([^.]*)$",url).group(1).lower()
 	return url
 
-def bop(bot, update):
-	url = get_image_url()
-	chat_id = update.message.chat_id
-	bot.send_photo(chat_id=chat_id, photo = url)
-	print("Sending photo...")
+@app.route("/")
+def index():
+	return "Hello user!"
 
-
-def main():
-	TOKEN = os.getenv("TOKEN")
-	PORT = int(os.environ.get('PORT', '8443'))
+@app.route("/recieve")
+def receive():
 	print("Running bot")
-	updater = Updater(TOKEN)
-	dp = updater.dispatcher
-	dp.add_handler(CommandHandler('bop', bop))
-	updater.start_webhook(listen="0.0.0.0",
-							port = PORT,
-							url_path = TOKEN)
-	updater.bot.set_webhook("https://kutta-bot.herokuapp.com/" + TOKEN)
-	updater.idle()
+	print(request)
+
+	return jsonify({"status":"200, OK"})
 
 if __name__ == '__main__':
-	main()
+	r = requests.post("https://api.telegram.org/bot{}/setWebhook?url=https://kutta-bot.herokuapp.com/receive".format(TOKEN))
+	print(r.content)
+	port = int(os.environ.get('PORT', 5000))
+    http_server = WSGIServer(('',port),app)
+	http_server.serve_forever()
