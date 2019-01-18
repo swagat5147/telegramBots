@@ -26,7 +26,7 @@ def index():
 	print(DATA)
 	return render_template("index.html", data=DATA)
 
-@app.route("/recieve", methods=["POST"])
+@app.route("/recieve", methods=["GET","POST"])
 def receive():
 	print("Running bot")
 	global DATA
