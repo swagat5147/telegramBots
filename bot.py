@@ -34,7 +34,7 @@ def update():
 	else:
 		print(request.get_json())
 		data = request.get_json()
-		if data['text'].startswith("/bop"):
+		if data['message']['text'].startswith("/bop"):
 			chat_id = data['chat']['id']
 			r = requests.post(BASE_URL+ "sendPhoto", data={'chat_id': chat_id, 'photo' : get_image_url(), 'caption' : "Bhow bhow!"})
 			print(r.status_code)
