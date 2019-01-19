@@ -18,7 +18,7 @@ def update():
 	print("RunningBot.......")
 	#print(request.get_json())
 	data = request.get_json()
-	print(data['message'])
+	print(data['message']['from'])
 	return "200, OK"
 
 if __name__ == '__main__':
