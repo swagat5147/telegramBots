@@ -18,7 +18,7 @@ def update():
 	print("RunningBot.......")
 	print(request.get_json())
 
-if __name__ == 'main':
+if __name__ == '__main__':
 	port = int(os.environ.get('PORT', 5000))
 	http_server = WSGIServer(('', port),app)
 	http_server.serve_forever() 
