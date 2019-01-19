@@ -18,10 +18,13 @@ def update():
 	print("RunningBot.......")
 	print(request.get_json())
 	data = request.get_json()
-	#print(data['message']['left_chat_member']['first_name'])
-	#print(data['message']['new_chat_member']['first_name'])
+	
 	if 'left_chat_member' in data['message']:
 		print(data['message']['left_chat_member']['first_name'])
+	
+	if 'new_chat_member' in data['message']:
+		print(data['message']['new_chat_member']['first_name'])
+	
 	return "200, OK"
 
 if __name__ == '__main__':
