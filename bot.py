@@ -18,7 +18,7 @@ def update():
 	print("RunningBot.......")
 	print(request.get_json())
 	data = request.get_json()
-	print(data['message']['left_chat_member']['first_name'])
+	#print(data['message']['left_chat_member']['first_name'])
 	print(data['message']['new_chat_member']['first_name'])
 	return "200, OK"
 
