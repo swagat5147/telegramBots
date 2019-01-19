@@ -18,12 +18,15 @@ def update():
 	print("RunningBot.......")
 	print(request.get_json())
 	data = request.get_json()
-	
+
 	if 'left_chat_member' in data['message']:
 		print(data['message']['left_chat_member']['first_name'])
 	
 	if 'new_chat_member' in data['message']:
 		print(data['message']['new_chat_member']['first_name'])
+		name = data['message']['new_chat_member']['first_name']
+		chat_id = data['message']['chat']['id']
+		r = requests.post(BASE_URL+ "sendMessage" + data={'chat_id': chat_id, 'text': "Welcome to Codex " + name})
 	
 	return "200, OK"
 
