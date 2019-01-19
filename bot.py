@@ -17,6 +17,8 @@ def index():
 def update():
 	print("RunningBot.......")
 	print(request.get_json())
+	data = request.get_json()
+	print(data['update_id'])
 	return "200, OK"
 
 if __name__ == '__main__':
