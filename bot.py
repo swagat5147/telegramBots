@@ -16,8 +16,8 @@ def index():
 @app.route("/update", methods = ["POST"])
 def update():
 	print("RunningBot.......")
-	print(request.get_json())
-	data = request.get_json()
+	#print(request.get_json())
+	data = request
 	print(data['update_id'])
 	return "200, OK"
 
