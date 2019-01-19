@@ -17,6 +17,7 @@ def index():
 def update():
 	print("RunningBot.......")
 	print(request.get_json())
+	return "200, OK"
 
 if __name__ == '__main__':
 	port = int(os.environ.get('PORT', 5000))
