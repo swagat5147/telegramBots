@@ -20,7 +20,7 @@ def update():
 	data = request.get_json()
 	#print(data['message']['left_chat_member']['first_name'])
 	#print(data['message']['new_chat_member']['first_name'])
-	if 'left_chat_member' in data:
+	if 'left_chat_member' in data['message']:
 		print(data['message']['left_chat_member']['first_name'])
 	return "200, OK"
 
