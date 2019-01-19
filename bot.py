@@ -19,7 +19,7 @@ def update():
 	print(request.get_json())
 	data = request.get_json()
 	print(data['message']['left_chat_member']['first_name'])
-	priny(data['message']['new_chat_member']['first_name'])
+	print(data['message']['new_chat_member']['first_name'])
 	return "200, OK"
 
 if __name__ == '__main__':
