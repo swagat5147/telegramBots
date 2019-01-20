@@ -13,6 +13,4 @@ def start():
 		return
 
 url, text = start()
-print(url)
-print(text)
 
