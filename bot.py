@@ -20,7 +20,7 @@ def update():
 	print(request.get_json())
 	data = request.get_json()
 
-	if data['message']['chat']['id'] == group_chat_id
+	if data['message']['chat']['id'] == group_chat_id:
 
 		if 'left_chat_member' in data['message']:
 			print(data['message']['left_chat_member']['first_name'])
