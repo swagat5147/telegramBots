@@ -29,14 +29,14 @@ def update():
 
 		if 'left_chat_member' in data['message']:
 			print(data['message']['left_chat_member']['first_name'])
-			Lname = data['message']['left_chat_member']['first_name']
-			r = requests.post(BASE_URL+ "sendMessage", data={'chat_id': group_chat_id, 'text': name + " Left Codex" })
+			Left_member_name = data['message']['left_chat_member']['first_name']
+			r = requests.post(BASE_URL+ "sendMessage", data={'chat_id': group_chat_id, 'text': L_member_name + " Left Codex" })
 
 
 		if 'new_chat_member' in data['message']:
 			print(data['message']['new_chat_member']['first_name'])
-			Nname = data['message']['new_chat_member']['first_name']
-			r = requests.post(BASE_URL+ "sendMessage", data={'chat_id': group_chat_id, 'text': "Welcome to Codex " + name})
+			New_member_name = data['message']['new_chat_member']['first_name']
+			r = requests.post(BASE_URL+ "sendMessage", data={'chat_id': group_chat_id, 'text': "Welcome to Codex " + New_member_name})
 		
 	return "200, OK"
 
