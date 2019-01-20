@@ -37,7 +37,7 @@ def update():
 			New_member_name = data['message']['new_chat_member']['first_name']
 			r = requests.post(BASE_URL+ "sendMessage", data={'chat_id': group_chat_id, 'text': "Welcome to Codex " + New_member_name})
 
-		if data['message']['text'] == '/xkcd':
+		if 'text' in data['message'] and data['message']['text'] == '/xkcd':
 			random = randint(1, 2100)
 			i = requests.get("https://xkcd.com/"+str(random)+"/info.0.json")
 			if i.status_code == 200:
