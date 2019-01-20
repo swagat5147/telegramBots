@@ -19,7 +19,8 @@ def update():
 	print("RunningBot.......")
 	print(request.get_json())
 	data = request.get_json()
-	print
+	print(group_chat_id)
+	print(data['message']['chat']['id'])
 
 	if (data['message']['chat']['id'] == group_chat_id):
 
