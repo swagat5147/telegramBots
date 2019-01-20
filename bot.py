@@ -30,7 +30,7 @@ def update():
 		if 'left_chat_member' in data['message']:
 			print(data['message']['left_chat_member']['first_name'])
 			Left_member_name = data['message']['left_chat_member']['first_name']
-			r = requests.post(BASE_URL+ "sendMessage", data={'chat_id': group_chat_id, 'text': L_member_name + " Left Codex" })
+			r = requests.post(BASE_URL+ "sendMessage", data={'chat_id': group_chat_id, 'text': Left_member_name + " Left Codex" })
 
 
 		if 'new_chat_member' in data['message']:
