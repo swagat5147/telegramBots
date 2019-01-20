@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 TOKEN = os.environ.get('TOKEN')
 BASE_URL = "https://api.telegram.org/bot{}/".format(TOKEN)
-group_chat_id = os.environ.get('group_chat_id')
+group_chat_id = int(os.environ.get('group_chat_id'))
 
 @app.route("/", methods = ["GET"])
 def index():
@@ -20,9 +20,10 @@ def update():
 	print(request.get_json())
 	data = request.get_json()
 	print(group_chat_id)
-	group_data = data['message']['chat']['id']
+	group_data = int(data['message']['chat']['id'])
+	print(group_data)
 
-	if (group_data == group_chat_id):
+	if group_data == group_chat_id:
 
 		print("Working>>>>")
 
