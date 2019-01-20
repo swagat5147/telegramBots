@@ -48,7 +48,7 @@ def update():
 				r = requests.post(BASE_URL + "sendPhoto", data={'chat_id': group_chat_id, 'photo': url, 'caption': text })
 		
 		if 'text' in data['message'] and data['message']['text'] == '/helpme':
-			r = requests.post(BASE_URL + "sendMessage", data-{'chat_id': group_chat_id, 'text': "Hello I'm Alfred the official butler of Codex, here are somethings I can do\n\n/helpme for Alfred's commands\n/xkcd for a bit of everthing\n/rules for Codexs' rules"})
+			r = requests.post(BASE_URL + "sendMessage", data-{'chat_id': group_chat_id, 'text': "Hello I'm Alfred the official butler of Codex, here are somethings I can do:\n\n/helpme for Alfred's commands\n/xkcd for a bit of everthing\n/rules for Codexs' rules"})
 
 		
 	return "200, OK"
