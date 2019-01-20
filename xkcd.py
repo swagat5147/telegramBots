@@ -6,7 +6,7 @@ if i.status_code == 200:
 	image = i.json()
 	url = image.get("img")
 	text = image.get("alt")
-	 url, text
+	
 	
 
 
