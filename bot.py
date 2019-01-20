@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, render_template
 from gevent.pywsgi import WSGIServer
-from xkcd import url, text
+from xkcd import start
 import requests
 import re
 import os
@@ -38,6 +38,7 @@ def update():
 			r = requests.post(BASE_URL+ "sendMessage", data={'chat_id': group_chat_id, 'text': "Welcome to Codex " + New_member_name})
 
 		if data['message']['text'] == '/xkcd':
+			url,text = start()
 			r = requests.post(BASE_URL+ "sendPhoto", data={'chat_id': group_chat_id, 'photo': url, 'caption': text})
 
 		
