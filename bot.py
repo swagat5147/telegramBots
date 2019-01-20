@@ -24,6 +24,8 @@ def update():
 
 	if (group_data == group_chat_id):
 
+		print("Working>>>>")
+
 		if 'left_chat_member' in data['message']:
 			print(data['message']['left_chat_member']['first_name'])
 			Lname = data['message']['left_chat_member']['first_name']
