@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 TOKEN = os.environ.get('TOKEN')
 BASE_URL = "https://api.telegram.org/bot{}/".format(TOKEN)
-group_chat_id = os.get.environ.get('group_chat_id')
+group_chat_id = os.environ.get('group_chat_id')
 
 @app.route("/", methods = ["GET"])
 def index():
